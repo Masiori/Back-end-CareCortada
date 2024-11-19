@@ -19,16 +19,16 @@ export class SicariosController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.sicariosService.findOne(+id);
+    return this.sicariosService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSicarioDto: UpdateSicarioDto) {
-    return this.sicariosService.update(+id, updateSicarioDto);
+    return this.sicariosService.update(id, updateSicarioDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.sicariosService.remove(+id);
+    return this.sicariosService.remove(id);
   }
 }

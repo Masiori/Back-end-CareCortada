@@ -19,16 +19,16 @@ export class MaquillajeController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.maquillajeService.findOne(+id);
+    return this.maquillajeService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMaquillajeDto: UpdateMaquillajeDto) {
-    return this.maquillajeService.update(+id, updateMaquillajeDto);
+    return this.maquillajeService.update(id, updateMaquillajeDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.maquillajeService.remove(+id);
+    return this.maquillajeService.remove(id);
   }
 }

@@ -19,16 +19,16 @@ export class ModelosController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.modelosService.findOne(+id);
+    return this.modelosService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateModeloDto: UpdateModeloDto) {
-    return this.modelosService.update(+id, updateModeloDto);
+    return this.modelosService.update(id, updateModeloDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.modelosService.remove(+id);
+    return this.modelosService.remove(id);
   }
 }

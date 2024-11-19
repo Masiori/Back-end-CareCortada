@@ -19,16 +19,16 @@ export class ProstitutasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.prostitutasService.findOne(+id);
+    return this.prostitutasService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProstitutaDto: UpdateProstitutaDto) {
-    return this.prostitutasService.update(+id, updateProstitutaDto);
+    return this.prostitutasService.update(id, updateProstitutaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.prostitutasService.remove(+id);
+    return this.prostitutasService.remove(id);
   }
 }

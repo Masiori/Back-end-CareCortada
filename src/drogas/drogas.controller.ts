@@ -19,16 +19,16 @@ export class DrogasController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.drogasService.findOne(+id);
+    return this.drogasService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateDrogasDto: UpdateDrogasDto) {
-    return this.drogasService.update(+id, updateDrogasDto);
+    return this.drogasService.update(id, updateDrogasDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.drogasService.remove(+id);
+    return this.drogasService.remove(id);
   }
 }
