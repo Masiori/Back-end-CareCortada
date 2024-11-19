@@ -11,7 +11,7 @@ export class CreateModeloDto {
     @ApiProperty({example:`5`, description:`Los años de experiencia que tenga la modelo`})
     @IsNumber()
     @Min(0)
-    añosdeexperiencia:number;
+    anosdeexperiencia:number;
 
     @ApiProperty({example:`1.8`, description:`La estatura que tenga la modelo en metros`})
     @IsNotEmpty()

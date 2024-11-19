@@ -12,7 +12,7 @@ export class Modelo {
 @Column(('number'),
 {
     unique:(false)
-})añosdeexperiencia:number
+})anosdeexperiencia:number
 
 @Column(("number"),
 {
