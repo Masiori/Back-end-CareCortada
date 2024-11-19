@@ -9,6 +9,7 @@ import { SicariosModule } from './sicarios/sicarios.module';
 import { ProstitutasModule } from './prostitutas/prostitutas.module';
 import { MaquillajeModule } from './maquillaje/maquillaje.module';
 import { DrogasModule } from './drogas/drogas.module';
+import { PhotosModule } from './photos/photos.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
@@ -19,7 +20,7 @@ import { DrogasModule } from './drogas/drogas.module';
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     synchronize: true
- }), ModelosModule, SicariosModule, ProstitutasModule, MaquillajeModule, DrogasModule],
+ }), ModelosModule, SicariosModule, ProstitutasModule, MaquillajeModule, DrogasModule, PhotosModule],
   controllers: [AppController],
   providers: [AppService],
 })
