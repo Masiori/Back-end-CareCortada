@@ -7,6 +7,7 @@ import { ModelosModule } from './modelos/modelos.module';
 import { Modelo } from './modelos/entities/modelo.entity';
 import { SicariosModule } from './sicarios/sicarios.module';
 import { ProstitutasModule } from './prostitutas/prostitutas.module';
+import { MaquillajeModule } from './maquillaje/maquillaje.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
@@ -17,7 +18,7 @@ import { ProstitutasModule } from './prostitutas/prostitutas.module';
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     synchronize: true
- }), ModelosModule, SicariosModule, ProstitutasModule],
+ }), ModelosModule, SicariosModule, ProstitutasModule, MaquillajeModule],
   controllers: [AppController],
   providers: [AppService],
 })
