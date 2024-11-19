@@ -1,26 +1,54 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateModeloDto } from './dto/create-modelo.dto';
 import { UpdateModeloDto } from './dto/update-modelo.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Modelo } from './entities/modelo.entity';
 
 @Injectable()
 export class ModelosService {
-  create(createModeloDto: CreateModeloDto) {
-    return 'This action adds a new modelo';
+  constructor(
+    @InjectRepository(Modelo)
+    private readonly modeloRepository: Repository<Modelo>
+  ){}
+
+  async create(createModeloDto: CreateModeloDto) {
+    try{
+      const modelo=this.modeloRepository.create(createModeloDto);
+      await this.modeloRepository.save(modelo);
+      return modelo;
+    }catch(e){
+      throw new InternalServerErrorException(`ya existe`);
+    }
   }
 
-  findAll() {
-    return `This action returns all modelos`;
+  async findAll() {
+    const modelos = await this.modeloRepository.find({});
+    return modelos;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} modelo`;
+  async findOne(id: String) {
+    const modelo = await this.modeloRepository.findOneBy({id:id});
+    if(!modelo){
+      throw new NotFoundException(`Modelo no encontrado`)
+    }
+    return modelo;
   }
 
-  update(id: number, updateModeloDto: UpdateModeloDto) {
-    return `This action updates a #${id} modelo`;
+  async update(id: String, updateModeloDto: UpdateModeloDto) {
+    const modelo = await this.modeloRepository.preload({
+      id:id,...updateModeloDto
+    })
+    if(!modelo) {
+      throw new NotFoundException(`Modelo no encontrada`);
+    }
+    await this.modeloRepository.save(modelo);
+    return modelo;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} modelo`;
+  async remove(id: String) {
+    const modelo = await this.findOne(id);
+    this.modeloRepository.delete(modelo);
+    return modelo;
   }
 }
