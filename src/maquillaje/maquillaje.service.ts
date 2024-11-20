@@ -23,7 +23,7 @@ export class MaquillajeService {
   }
 
   async findAll() {
-    const maquillajes = await this.maquillajeRepository.find({});
+    const maquillajes = await this.maquillajeRepository.find({relations:{evento:false}});
     return maquillajes;
   }
 

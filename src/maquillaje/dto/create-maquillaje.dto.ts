@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsString, Min, MinLength } from "class-validator";
+import { IsNotEmpty, IsNumber, IsObject, IsString, Min, MinLength } from "class-validator";
+import { Evento } from "src/eventos/entities/evento.entity";
 
 export class CreateMaquillajeDto {
     @ApiProperty({example:`Mascara`, description:`El tipo de maquillaje`})

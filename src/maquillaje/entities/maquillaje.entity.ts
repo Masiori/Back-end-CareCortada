@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Evento } from "src/eventos/entities/evento.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 export class Maquillaje {
     @PrimaryGeneratedColumn(`uuid`)
@@ -33,4 +34,11 @@ export class Maquillaje {
             unique:false
         }
     )imagen:String;
+
+    @ManyToOne(
+        ()=>Evento,evento=>evento.maquillajes,{
+            cascade:false,
+            eager:true
+        }
+    )evento?:Evento[];
 }

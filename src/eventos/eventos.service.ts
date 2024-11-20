@@ -23,7 +23,7 @@ export class EventosService {
   }
 
   async findAll() {
-    const eventos = await this.eventoRepository.find({});
+    const eventos = await this.eventoRepository.find({relations:{modelos:true,maquillajes:true}});
     return eventos;
   }
 

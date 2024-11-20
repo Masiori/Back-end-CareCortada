@@ -1,4 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { Maquillaje } from "src/maquillaje/entities/maquillaje.entity";
+import { Modelo } from "src/modelos/entities/modelo.entity";
+import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export class Evento {
     @PrimaryGeneratedColumn(`uuid`)
@@ -27,4 +29,14 @@ export class Evento {
             unique:false
         }
     )valorEntrada:number;
+
+    @OneToMany(
+        ()=>Modelo,modelo => modelo.evento
+    )
+    modelos?:Modelo[];
+
+    @OneToMany(
+        ()=>Maquillaje,maquillaje=>maquillaje.evento
+    )
+    maquillajes?:Maquillaje[];
 }

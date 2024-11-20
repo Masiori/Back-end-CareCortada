@@ -1,4 +1,5 @@
-import { Column, Double, Entity, IntegerType, PrimaryGeneratedColumn } from "typeorm";
+import { Evento } from "src/eventos/entities/evento.entity";
+import { Column, Double, Entity, IntegerType, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Modelo {
@@ -33,5 +34,13 @@ export class Modelo {
             unique:(true)
         }
     )imagen:String
+
+    @ManyToOne(
+        ()=>Evento,
+        (evento) => evento.modelos,{
+            cascade:false,
+            eager:true
+        }
+    )evento?:Evento;
 
 }

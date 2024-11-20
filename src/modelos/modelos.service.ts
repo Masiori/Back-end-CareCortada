@@ -23,7 +23,7 @@ export class ModelosService {
   }
 
   async findAll() {
-    const modelos = await this.modeloRepository.find({});
+    const modelos = await this.modeloRepository.find({relations:{evento:false}});
     return modelos;
   }
 
