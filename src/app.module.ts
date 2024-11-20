@@ -11,6 +11,7 @@ import { MaquillajeModule } from './maquillaje/maquillaje.module';
 import { DrogasModule } from './drogas/drogas.module';
 import { PhotosModule } from './photos/photos.module';
 import { EventosModule } from './eventos/eventos.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
@@ -21,7 +22,7 @@ import { EventosModule } from './eventos/eventos.module';
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     synchronize: true
- }), ModelosModule, SicariosModule, ProstitutasModule, MaquillajeModule, DrogasModule, PhotosModule, EventosModule],
+ }), ModelosModule, SicariosModule, ProstitutasModule, MaquillajeModule, DrogasModule, PhotosModule, EventosModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
